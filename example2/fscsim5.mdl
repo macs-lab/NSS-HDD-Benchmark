@@ -1,0 +1,359 @@
+Model {
+  Name			  "fscsim5"
+  Version		  3.00
+  SimParamPage		  "Solver"
+  SampleTimeColors	  on
+  InvariantConstants	  off
+  WideVectorLines	  off
+  ShowLineWidths	  off
+  ShowPortDataTypes	  off
+  StartTime		  "0.0"
+  StopTime		  "20e-3"
+  SolverMode		  "SingleTasking"
+  Solver		  "ode45"
+  RelTol		  "1e-3"
+  AbsTol		  "1e-6"
+  Refine		  "1"
+  MaxStep		  "Ts/10"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  MaxOrder		  5
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  on
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  on
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Matrix"
+  LimitMaxRows		  off
+  MaxRows		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  "warning"
+  MinStepSizeMsg	  "warning"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  IntegerOverflowMsg	  "warning"
+  UnnecessaryDatatypeConvMsg "none"
+  Int32ToFloatConvMsg	  "warning"
+  SignalLabelMismatchMsg  "none"
+  ConsistencyChecking	  "off"
+  ZeroCross		  on
+  SimulationMode	  "normal"
+  BlockDataTips		  on
+  BlockParametersDataTip  off
+  BlockAttributesDataTip  off
+  BlockPortWidthsDataTip  off
+  BlockDescriptionStringDataTip	off
+  BlockMaskParametersDataTip off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  OptimizeBlockIOStorage  on
+  BufferReuse		  on
+  BooleanDataType	  off
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWOptions		  "-aEnforceIntegerDowncast=1 -aExtMode=0 -aExtModeTes"
+"ting=0 -aFoldNonRolledExpr=1 -aForceParamTrailComments=0 -aGenerateComments=1"
+" -aGenerateReport=0 -aIgnoreCustomStorageClasses=0 -aIncDataTypeInIds=0 -aInc"
+"HierarchyInIds=0 -aInlineInvariantSignals=1 -aInlinedPrmAccess=\"Literals\" -"
+"aLocalBlockOutputs=1 -aLogVarNameModifier=\"rt_\" -aMaxRTWIdLen=31 -aPrefixMo"
+"delToSubsysFcnNames=1 -aRTWVerbose=1 -aRollThreshold=5 -aShowEliminatedStatem"
+"ents=0"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  Created		  "Thu Aug 25 21:14:12 2005"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "takeyori"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Wed Dec 06 13:22:35 2006"
+  ModelVersionFormat	  "1.%<AutoIncrement:20>"
+  ConfigurationManager	  "None"
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "fscsim5"
+    Location		    [8, 468, 508, 769]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "automatic"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    AutoZoom		    on
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Clock
+      Name		      "Clock"
+      Position		      [55, 30, 75, 50]
+      DisplayTime	      off
+      Decimation	      "10"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "Control Input"
+      Position		      [315, 190, 375, 220]
+      VariableName	      "us"
+      Buffer		      "inf"
+      Decimation	      "1"
+      SampleTime	      "Ts/10"
+      SaveFormat	      "Matrix"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Disscrete-time Plant"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [180, 112, 275, 148]
+      ShowPortLabels	      on
+      MaskType		      "LTI Block"
+      MaskDescription	      "The LTI System block accepts both continuous an"
+"d discrete LTI objects as defined in the Control System Toolbox. Transfer fun"
+"ction, state-space, and zero-pole-gain formats are all supported in this bloc"
+"k.\n\nNote: For multi-input systems, the input delays must be either all posi"
+"tive or all zero.\n\nNote: Initial states are only meaningful for state-space"
+" systems."
+      MaskHelp		      "The LTI System block accepts any of the three s"
+"tandard LTI objects described in the Control System Toolbox: transfer functio"
+"n, zero/pole/gain, or state space. Internally, the object will be converted t"
+"o its state space equivalent for evaluation.\n<p>\nIn the editable text box l"
+"abeled <b>LTI System Variable</b>, enter the variable name of an LTI object."
+"\n<p>\nIn the editable text box labeled <b>Initial States</b> enter the initi"
+"al state vector for state-space systems only. \n <p>\n<I>NOTE:</I> Initial st"
+"ates are only valid for state-space systems. The simulation will not run if n"
+"on-zero initial states are given for transfer function or zero/pole/gain LTI "
+"objects\n<p>\n<I>NOTE:</b> For multi-input systems, the input delays (stored "
+"within the LTI object field: Td) must be either all positive or all zero. The"
+" simulation will not run if there is a mix of positive and zero input delays."
+"\n<p>\nSee also TF, ZPK, SS."
+      MaskPromptString	      "LTI system variable|Initial states   (state-spa"
+"ce only)"
+      MaskStyleString	      "edit,edit"
+      MaskTunableValueString  "on,on"
+      MaskCallbackString      "ltimask('MaskLTICallback',gcb);|ltimask('MaskIC"
+"Callback',gcb);"
+      MaskEnableString	      "on,on"
+      MaskVisibilityString    "on,on"
+      MaskVariables	      "sys=@1;IC=@2;"
+      MaskInitialization      "sysname='???';\nif ~exist('A'),\nA=[];B=[];C=[]"
+";D=1;Xo=0;\nend,\n[A,B,C,D,Xo,Tdi,Tdo,Ts,sysname]=ltimask('AssignData',gcb,sy"
+"s,IC);\nltimask( 'UpdateDiagram',gcb,sys,Tdi,Tdo);"
+      MaskDisplay	      "disp(sysname)"
+      MaskSelfModifiable      on
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "sysd_P|[0]"
+      System {
+	Name			"Disscrete-time Plant"
+	Location		[594, 403, 968, 514]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	AutoZoom		on
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  Position		  [20, 35, 40, 55]
+	  Port			  "1"
+	  PortWidth		  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  DiscreteStateSpace
+	  Name			  "Internal"
+	  Position		  [135, 25, 240, 65]
+	  A			  "A"
+	  B			  "B"
+	  C			  "C"
+	  D			  "D"
+	  X0			  "Xo"
+	  SampleTime		  "Ts"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Tdi"
+	  Tag			  "InputDelayBlock"
+	  Ports			  [1, 1, 0, 0, 0]
+	  Position		  [75, 31, 105, 59]
+	  ShowName		  off
+	  SourceBlock		  "cstextras/Transport Delay\n(masked)"
+	  SourceType		  "Transport Delay (masked)"
+	  Td			  "Tdi"
+	  u0			  "0"
+	  bufsize		  "1024"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Tdo"
+	  Tag			  "OutputDelayBlock"
+	  Ports			  [1, 1, 0, 0, 0]
+	  Position		  [275, 31, 305, 59]
+	  ShowName		  off
+	  SourceBlock		  "cstextras/Transport Delay\n(masked)"
+	  SourceType		  "Transport Delay (masked)"
+	  Td			  "Tdo"
+	  u0			  "0"
+	  bufsize		  "1024"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  Position		  [335, 35, 355, 55]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "0"
+	}
+	Line {
+	  SrcBlock		  "Tdo"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Internal"
+	  SrcPort		  1
+	  DstBlock		  "Tdo"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Tdi"
+	  SrcPort		  1
+	  DstBlock		  "Internal"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "Tdi"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "From\nWorkspace"
+      Position		      [55, 118, 120, 142]
+      VariableName	      "[tr' U]"
+      SampleTime	      "Ts"
+      Interpolate	      off
+      HoldFinalValue	      off
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "Head position1"
+      Position		      [315, 115, 375, 145]
+      VariableName	      "ys"
+      Buffer		      "inf"
+      Decimation	      "1"
+      SampleTime	      "Ts/10"
+      SaveFormat	      "Matrix"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace"
+      Position		      [120, 25, 180, 55]
+      VariableName	      "ts"
+      Buffer		      "inf"
+      Decimation	      "1"
+      SampleTime	      "Ts/10"
+      SaveFormat	      "Matrix"
+    }
+    Line {
+      SrcBlock		      "Clock"
+      SrcPort		      1
+      DstBlock		      "To Workspace"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Disscrete-time Plant"
+      SrcPort		      1
+      DstBlock		      "Head position1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From\nWorkspace"
+      SrcPort		      1
+      Points		      [15, 0]
+      Branch {
+	DstBlock		"Disscrete-time Plant"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 75]
+	DstBlock		"Control Input"
+	DstPort			1
+      }
+    }
+  }
+}

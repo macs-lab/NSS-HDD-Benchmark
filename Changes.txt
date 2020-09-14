@@ -1,0 +1,99 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ver.3.1 変更点
+
+・Ver.1.0とVer.2.0のパラメータファイルを用意し，HDDBench.m を実行する
+  際に選択できるようにした。また，パラメータファイルのコメントから
+  'beta version' を削除。
+
+  hdd_plantparam_v1.m
+  hdd_distparam_v1.m
+  hdd_plantparam_v2.m
+  hdd_distparam_v2.m
+
+・hdd_distparam_v1.m, hdd_distparam_v2.m にも ModelName, Comment を設定し，
+  SetDistParam.m もそれにあわせて変更。
+
+・SetPlantModel.m で ModelName, Comment が2回設定されていたので片方削除。
+
+・example1/evperf.m をアップデート
+
+  * プラントの入力の刻み幅を Tc から Tu に変更（bug fix）
+  * パラメータ変動に対するシミュレーションを行うとき，すべての図を表示
+    するかどうかを選択できるようにした。
+    % Option for figure plot
+    close_figure = 1; % (1: close figure, 0: keep all figures)
+  * シミュレーション時間を指定する変数 Tsim を導入した。PESのスペクト
+    ラムを計算せず，NRPE6σやRPEpp の値を評価するだけであれば，Tsim =
+    1 とした簡易シミュレーションでも性能評価できる。
+
+・example1/followdemo.m
+
+  * 以下のデータファイルを読み込むように変更
+    mainPlantDataV1.mat
+    mainDistDataV1.mat
+
+・example2/seekdemo.m
+  * 以下のデータファイルを読み込むように変更
+    mainPlantDataV2.mat
+    mainDistDataV2.mat
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ver.3RC2 変更点 (作業中含む)
+
+・Ver.1 と Ver.2 をマージ
+
+・プラントモデルと外乱モデルのパラメータファイルを関数から分離
+
+   hdd_plantparam.m, hdd_distparam.m
+
+   ベンチマークにpathを通したうえで、適当なディレクトリにこの名前でパ
+   ラメータファイルを作成すれば独自モデルの作成が可能
+
+   example1/ には Ver.1 相当のパラメータファイルを含めてあるため、この
+   ディレクトリで HDDBench を実行すれば Ver.1 のモデルが作成される
+
+
+・ヘルプの書式を変更・(ある程度)統一
+
+    先頭一行コメント (help Ver31 で一覧表示)
+    スプリプトは一字下げ
+    Copyright表示(2004-2005 MSS benchmark WG, 2006- HDD benchmark WG)
+    Ver表示を最新のみとする
+
+・Following、Seek それぞれの例を example1, example2 ディレクトリに
+
+・path を通して使うことを想定
+
+・main.m をモデル定義とプロットに分離
+    main.m → HDDBench.m, HDDBenchPlot.m
+
+・Pfpert(:,:,1) をノミナルのフルオーダーモデル Pf と同一とする
+
+・MATLAB Ver5.3.1/Ver7.1 での実行に対処
+
+    LTIオブジェクトの非互換(5.3.1,7.1) 各バージョンで作成
+    rand関数の非互換(5.3.1) 6.5.1で作成した外乱をロードすれば良い
+    →外乱モデルを .mat ファイルでも提供
+    Simulinkモデルの非互換(5.3.1) Ver5用(Simulink Ver3)のモデルを別に作成
+
+ <example1/> (following)
+
+   NRRO,RRO は制御前の run-out すなわち外乱の意味で用い、これまで制御後
+   の位置誤差の意味で使っていた NRRO,RRO を NRPE,RPE に変更
+
+   example1.m -> example1/followdemo.m
+
+   loopgain_pt をプラント定義の PlantData.DeltaKp を使うように変更
+
+   robust_sw でゲイン変動あり/なしも変更できるようにした
+
+   MATLAB5.x用のSIMULINKモデルを追加
+
+
+ <example2/> (short seek)
+
+ fscsim.mdl のプラントを連続時間ssモデルから離散時間(Ts/10)LTIモデルに変更
+ (時間遅れをシステムに含めるため)
+
+
+%% EOF of Changes.txt

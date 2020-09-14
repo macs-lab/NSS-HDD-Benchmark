@@ -1,0 +1,432 @@
+Model {
+  Name			  "SimTrackFollowing5"
+  Version		  3.00
+  SimParamPage		  "Solver"
+  SampleTimeColors	  on
+  InvariantConstants	  off
+  WideVectorLines	  on
+  ShowLineWidths	  off
+  ShowPortDataTypes	  off
+  StartTime		  "0.0"
+  StopTime		  "NmaxTs*Ts"
+  SolverMode		  "Auto"
+  Solver		  "ode45"
+  RelTol		  "1e-3"
+  AbsTol		  "auto"
+  Refine		  "1"
+  MaxStep		  "auto"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  MaxOrder		  5
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  on
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  on
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Matrix"
+  LimitMaxRows		  off
+  MaxRows		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  "warning"
+  MinStepSizeMsg	  "warning"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  IntegerOverflowMsg	  "warning"
+  UnnecessaryDatatypeConvMsg "none"
+  Int32ToFloatConvMsg	  "warning"
+  SignalLabelMismatchMsg  "none"
+  ConsistencyChecking	  "off"
+  ZeroCross		  on
+  SimulationMode	  "normal"
+  BlockDataTips		  on
+  BlockParametersDataTip  on
+  BlockAttributesDataTip  off
+  BlockPortWidthsDataTip  off
+  BlockDescriptionStringDataTip	off
+  BlockMaskParametersDataTip off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  OptimizeBlockIOStorage  on
+  BufferReuse		  on
+  BooleanDataType	  off
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "oneshot"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  off
+  Created		  "Mon Sep 12 14:05:23 2005"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "takeyori"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Tue Dec 05 22:00:10 2006"
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
+  ConfigurationManager	  "none"
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "SimTrackFollowing5"
+    Location		    [16, 74, 1071, 661]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    AutoZoom		    on
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Reference
+      Name		      "Controller"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [210, 337, 305, 373]
+      DropShadow	      on
+      SourceBlock	      "cstblocks/LTI System"
+      SourceType	      "LTI Block"
+      sys		      "sys_C1"
+      IC		      "[0]"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Discrete-time Plant"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [655, 332, 750, 368]
+      DropShadow	      on
+      SourceBlock	      "cstblocks/LTI System"
+      SourceType	      "LTI Block"
+      sys		      "sysd_P"
+      IC		      "[0]"
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "Flutter"
+      Position		      [70, 30, 340, 60]
+      VariableName	      "[FlutterDist.Time,FlutterDist.Data]"
+      SampleTime	      "FlutterDist.Ts"
+      Interpolate	      on
+      HoldFinalValue	      off
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "Force Disturbance"
+      Position		      [70, 215, 340, 245]
+      VariableName	      "[ForceDist.Time,ForceDist.Data]"
+      SampleTime	      "ForceDist.Ts"
+      Interpolate	      on
+      HoldFinalValue	      off
+    }
+    Block {
+      BlockType		      Ground
+      Name		      "Ground"
+      Position		      [55, 345, 75, 365]
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Notch Filter"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [365, 337, 460, 373]
+      DropShadow	      on
+      SourceBlock	      "cstblocks/LTI System"
+      SourceType	      "LTI Block"
+      sys		      "sys_C2"
+      IC		      "[0]"
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "RRO"
+      Position		      [70, 130, 340, 160]
+      VariableName	      "[RRO.Time,RRO.Data]"
+      SampleTime	      "RRO.Ts"
+      Interpolate	      on
+      HoldFinalValue	      off
+    }
+    Block {
+      BlockType		      FromWorkspace
+      Name		      "Sensor Noise"
+      Position		      [70, 80, 340, 110]
+      VariableName	      "[SensorNoise.Time,SensorNoise.Data]"
+      SampleTime	      "SensorNoise.Ts"
+      Interpolate	      on
+      HoldFinalValue	      off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [140, 345, 160, 365]
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum1"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [520, 340, 540, 360]
+      ShowName		      off
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [4, 1, 0, 0, 0]
+      Position		      [870, 281, 890, 359]
+      ShowName		      off
+      IconShape		      "rectangular"
+      Inputs		      "+++|+"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace"
+      Position		      [960, 305, 1020, 335]
+      VariableName	      "PESDataT"
+      Buffer		      "NmaxTs"
+      Decimation	      "1"
+      SampleTime	      "Ts"
+      SaveFormat	      "StructureWithTime"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      Position		      [560, 419, 630, 451]
+      VariableName	      "ControlDataT"
+      Buffer		      "NmaxTc"
+      Decimation	      "1"
+      SampleTime	      "Tc"
+      SaveFormat	      "StructureWithTime"
+    }
+    Block {
+      BlockType		      ZeroOrderHold
+      Name		      "Zero-Order\nHold"
+      Position		      [795, 331, 830, 369]
+      SampleTime	      "Ts"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "g_flutter"
+      Position		      [375, 30, 405, 60]
+      Gain		      "g_flutter"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "g_rro"
+      Position		      [375, 130, 405, 160]
+      Gain		      "g_rro"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "g_sensor"
+      Position		      [375, 80, 405, 110]
+      Gain		      "g_sensor"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "g_torque"
+      Position		      [375, 215, 405, 245]
+      Gain		      "g_torque"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "loopgain"
+      Position		      [570, 335, 600, 365]
+      Gain		      "loopgain"
+      SaturateOnIntegerOverflow	on
+    }
+    Line {
+      SrcBlock		      "Flutter"
+      SrcPort		      1
+      DstBlock		      "g_flutter"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sensor Noise"
+      SrcPort		      1
+      DstBlock		      "g_sensor"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "RRO"
+      SrcPort		      1
+      DstBlock		      "g_rro"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Controller"
+      SrcPort		      1
+      DstBlock		      "Notch Filter"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "loopgain"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      DstBlock		      "Controller"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "loopgain"
+      SrcPort		      1
+      DstBlock		      "Discrete-time Plant"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Force Disturbance"
+      SrcPort		      1
+      DstBlock		      "g_torque"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "g_torque"
+      SrcPort		      1
+      Points		      [85, 0; 0, 115]
+      DstBlock		      "Sum1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Ground"
+      SrcPort		      1
+      DstBlock		      "Sum"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Discrete-time Plant"
+      SrcPort		      1
+      DstBlock		      "Zero-Order\nHold"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Zero-Order\nHold"
+      SrcPort		      1
+      DstBlock		      "Sum2"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      Points		      [25, 0]
+      Branch {
+	DstBlock		"To Workspace"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 170; -770, 0]
+	DstBlock		"Sum"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Notch Filter"
+      SrcPort		      1
+      Points		      [30, 0]
+      Branch {
+	DstBlock		"Sum1"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 80]
+	DstBlock		"To Workspace1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "g_rro"
+      SrcPort		      1
+      Points		      [405, 0; 0, 175]
+      DstBlock		      "Sum2"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "g_sensor"
+      SrcPort		      1
+      Points		      [425, 0; 0, 210]
+      DstBlock		      "Sum2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "g_flutter"
+      SrcPort		      1
+      Points		      [440, 0; 0, 245]
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
+    Annotation {
+      Position		      [947, 83]
+      Text		      "HDD Benchmark Ver.1.0\nTrack Following Model\nP"
+"ID + Multi-rate Notch Filter\nCopyright (c) HDD Benchmark WG"
+    }
+  }
+}
